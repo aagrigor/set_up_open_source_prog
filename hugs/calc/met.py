@@ -91,3 +91,6 @@ def get_wind_components(speed, wdir):
     u = -speed * np.sin(wdir)
     v = -speed * np.cos(wdir)
     return u, v
+	
+def foo():
+	pass
