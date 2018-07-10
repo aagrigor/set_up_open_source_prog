@@ -11,5 +11,5 @@ def test_snell():
     assert_almost_equal(res, 19.43022, 4)
 
 def test_snell_zero_velocity():
-	with pytest.raises(ValueError):
-		snell_angle(12, 0, 4000)
+    with pytest.raises(ValueError):
+        snell_angle(12, 0, 4000)

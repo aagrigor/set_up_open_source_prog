@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e7702f7-2825-43a4-8174-3f23d1ee99a4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Untitled.ipynb" afterPath="$PROJECT_DIR$/Untitled.ipynb" />
       <change beforePath="$PROJECT_DIR$/hugs/calc/met.py" afterPath="$PROJECT_DIR$/hugs/calc/met.py" />
+      <change beforePath="$PROJECT_DIR$/hugs/calc/tests/test_geology.py" afterPath="$PROJECT_DIR$/hugs/calc/tests/test_geology.py" />
       <change beforePath="$PROJECT_DIR$/hugs/calc/tests/test_met.py" afterPath="$PROJECT_DIR$/hugs/calc/tests/test_met.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="met.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="met.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hugs/calc/met.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="246">
-              <caret line="34" column="25" lean-forward="false" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="25" />
+              <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
               <folding>
                 <element signature="e#89#120#0" expanded="true" />
               </folding>
@@ -30,11 +30,31 @@
       <file leaf-file-name="test_met.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hugs/calc/tests/test_met.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+            <state relative-caret-position="93">
+              <caret line="42" column="42" lean-forward="false" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
               <folding>
                 <element signature="e#30#101#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="special_plot.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hugs/plots/special_plot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_geology.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hugs/calc/tests/test_geology.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -52,8 +72,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/hugs/calc/tests/test_met.py" />
         <option value="$PROJECT_DIR$/hugs/calc/met.py" />
+        <option value="$PROJECT_DIR$/hugs/calc/tests/test_met.py" />
+        <option value="$PROJECT_DIR$/hugs/calc/tests/test_geology.py" />
       </list>
     </option>
   </component>
@@ -122,6 +143,12 @@
               <item name="hugs" type="462c0819:PsiDirectoryNode" />
               <item name="calc" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hugs-aagrigor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hugs-aagrigor" type="462c0819:PsiDirectoryNode" />
+              <item name="hugs" type="462c0819:PsiDirectoryNode" />
+              <item name="plots" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -219,23 +246,39 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/hugs/calc/met.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+          <folding>
+            <element signature="e#89#120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hugs/calc/tests/test_met.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+        <state relative-caret-position="93">
+          <caret line="42" column="42" lean-forward="false" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
           <folding>
             <element signature="e#30#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hugs/calc/met.py">
+    <entry file="file://$PROJECT_DIR$/hugs/plots/special_plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="34" column="25" lean-forward="false" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="25" />
-          <folding>
-            <element signature="e#89#120#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hugs/calc/tests/test_geology.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
