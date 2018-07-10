@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://jrleeman.github.io/SettingUpOpenSource/lessons/testing.html -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Testing | SettingUpOpenSource</title>
+<meta name="generator" content="Jekyll v3.7.3">
+<meta property="og:title" content="Testing">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Tutorial on Setting Up Your Own Open Source Project">
+<meta property="og:description" content="Tutorial on Setting Up Your Own Open Source Project">
+<link rel="canonical" href="https://jrleeman.github.io/SettingUpOpenSource/lessons/testing.html">
+<meta property="og:url" content="https://jrleeman.github.io/SettingUpOpenSource/lessons/testing.html">
+<meta property="og:site_name" content="SettingUpOpenSource">
+<script type="application/ld+json">
+{"description":"Tutorial on Setting Up Your Own Open Source Project","@type":"WebPage","url":"https://jrleeman.github.io/SettingUpOpenSource/lessons/testing.html","headline":"Testing","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="./Testing _ SettingUpOpenSource_files/style.css">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">SettingUpOpenSource</h1>
+      <h2 class="project-tagline">Tutorial on Setting Up Your Own Open Source Project</h2>
+      
+        <a href="https://github.com/jrleeman/SettingUpOpenSource" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <h1 id="testing">Testing</h1>
+
+<h2 id="objectives">Objectives</h2>
+<ul>
+  <li>Setup our sample project for testing</li>
+  <li>Discuss types of tests</li>
+  <li>Write tests using PyTest</li>
+  <li>Run the test suite</li>
+  <li>Practice test driven development</li>
+  <li>Check the test coverage of our project</li>
+</ul>
+
+<p><strong>Duration: 60 minutes</strong></p>
+
+<p>Testing is the only way to keep your code base maintained on multiple versions
+of Python, ensure its accuracy against known cases, and prevent regressions. In
+this lesson, we’ll go over the basics to testing, setup a test suit on our
+project, run it locally, and then run it on TravisCI. Finally, we’ll check the
+test coverage on our project.</p>
+
+<h3 id="add-canned-library-code-to-repository">Add (canned) library code to repository</h3>
+<p>For us to write tests, we’ll need come code to test. To save time, we’ve
+provided code for a simple library in the tutorial’s repository.</p>
+
+<ul>
+  <li>Download the zip of the github repository (or clone if you prefer)
+`https://github.com/jrleeman/SettingUpOpenSource</li>
+  <li>Copy the library folder <code class="highlighter-rouge">hugs</code> and <code class="highlighter-rouge">setup.py</code> into the base of your
+repository.</li>
+  <li>Commit and push this with <code class="highlighter-rouge">git add -A</code>, then <code class="highlighter-rouge">git commit -m "Adding library
+code"</code></li>
+</ul>
+
+<p>The <code class="highlighter-rouge">hugs</code> library (<strong>h</strong>ugely <strong>u</strong>seful <strong>g</strong>eoscience <strong>s</strong>tuff)
+is a demo library that we’ve created for this tutorial. It contains
+some geology/geophysics and atmospheric science equations and plots
+that we can write tests for.</p>
+
+<h3 id="activate-and-install-hugs">Activate and install hugs</h3>
+<ul>
+  <li>Activate the environment we created for the workshop <code class="highlighter-rouge">conda activate suos</code>
+If you didn’t setup the environment before we started, run <code class="highlighter-rouge">conda env create</code>
+in the root of the repository.</li>
+  <li>In the base directory of the repository, install an editable version of the
+hugs library (uses <code class="highlighter-rouge">setup.py</code>) with <code class="highlighter-rouge">pip install -e .</code></li>
+</ul>
+
+<h3 id="writing-tests-with-pytest">Writing tests with PyTest</h3>
+<p>PyTest is one of the most commonly used Python testing frameworks. We are
+going to cover the basic concept of test writing and explore the test
+coverage of the <code class="highlighter-rouge">hugs</code> library.</p>
+
+<p>There are many types of software testing and schools of thought on it,
+but here we’ll define a few terms and how we’ll be using them in the
+context of this tutorial.</p>
+
+<p><strong>Unit Testing</strong> - Testing a single unit of code (function, method, etc)
+for the correct or expected outputs.</p>
+
+<p><strong>Integration Testing</strong> - Testing that multiple segments of code can
+function together as expected.</p>
+
+<p><strong>Regression Testing</strong> - Testing that previously developed functionality
+or bug fixes still function as expected.</p>
+
+<p>Another buzz-word is test-driven-development (TDD). This is the process
+of writing the test for the expected behavior and API before development
+of the code. For example, writing the test for the correct output of a
+function before fixing a reported bug.</p>
+
+<hr>
+
+<ul>
+  <li>First we need to install <code class="highlighter-rouge">PyTest</code>. Do this with <code class="highlighter-rouge">conda install PyTest</code></li>
+  <li>Verify your installation with <code class="highlighter-rouge">pytest --version</code></li>
+</ul>
+
+<hr>
+
+<p>Pytest looks for files named <code class="highlighter-rouge">test*.py</code> and will run the functions named
+<code class="highlighter-rouge">test*</code> in those files.</p>
+
+<ul>
+  <li>Run the current test suite with <code class="highlighter-rouge">pytest</code> and observe the results.</li>
+  <li>Change a test result so that the tests will break and run again to see
+what a test failure looks like.</li>
+</ul>
+
+<h3 id="creating-tests">Creating Tests</h3>
+
+<p><strong>Activity</strong></p>
+<ul>
+  <li>Write a test for the function <code class="highlighter-rouge">get_wind_components</code> to verify that it works
+with scalar values for the speed and direction.</li>
+  <li>Write another test for <code class="highlighter-rouge">get_wind_components</code> to verify that it works on
+an array of values. Write the array to test every 45 degrees of the compass
+including the end-member cases of 0 degrees and 360 degrees.</li>
+</ul>
+
+<p><strong>Solution</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">test_wind_comps_basic</span><span class="p">():</span>
+      <span class="s">"""Test the basic wind component calculation."""</span>
+      <span class="n">speed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mf">10.</span><span class="p">])</span>
+      <span class="n">dirs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">315</span><span class="p">,</span> <span class="mi">360</span><span class="p">])</span>
+      <span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span>
+
+      <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">get_wind_components</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">dirs</span><span class="p">)</span>
+
+      <span class="n">true_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span> <span class="o">/</span> <span class="n">s2</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span> <span class="o">/</span> <span class="n">s2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span> <span class="o">/</span> <span class="n">s2</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span> <span class="o">/</span> <span class="n">s2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+      <span class="n">true_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span> <span class="o">/</span> <span class="n">s2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span> <span class="o">/</span> <span class="n">s2</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span> <span class="o">/</span> <span class="n">s2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span> <span class="o">/</span> <span class="n">s2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">])</span>
+
+      <span class="n">assert_array_almost_equal</span><span class="p">(</span><span class="n">true_u</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+      <span class="n">assert_array_almost_equal</span><span class="p">(</span><span class="n">true_v</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+
+  <span class="k">def</span> <span class="nf">test_wind_comps_scalar</span><span class="p">():</span>
+      <span class="s">"""Test wind components calculation with scalars."""</span>
+      <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">get_wind_components</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+      <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+      <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mf">6.9282</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="other-common-tests">Other Common Tests</h3>
+
+<h4 id="test-that-a-warning-is-raised">Test that a warning is raised</h4>
+<p>Some functions will raise warnings and we want to ensure that indeed that is
+happening. We can use <code class="highlighter-rouge">pytest.warns</code> to check this. It’s used as a context
+manager.</p>
+
+<p><strong>Activity</strong></p>
+<ul>
+  <li>Add a test to verify that the <code class="highlighter-rouge">get_wind_components</code> function to verfiy that
+a warning is raised when the wind direction is greater than 360 degrees. Don’t
+forget to verify that your test is working by first by using values that will
+not raise a warning.</li>
+</ul>
+
+<p><strong>Solution</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_warning_direction</span><span class="p">():</span>
+    <span class="s">"""Test that warning is raised wind direction &gt; 360."""</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">warns</span><span class="p">(</span><span class="nb">UserWarning</span><span class="p">):</span>
+        <span class="n">get_wind_components</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="test-that-an-exception-is-raised">Test that an exception is raised</h4>
+<p>In cases where an exception is raised, we want to check that it indeed is as
+well. We do this similarly to the warning check using <code class="highlighter-rouge">pytest.raises</code> as a
+context manager.</p>
+
+<p><strong>Activity</strong>
+Add a test to ensure that a <code class="highlighter-rouge">ValueError</code> is raised on the <code class="highlighter-rouge">snell_angle</code> function
+when the top layer velocity is zero.</p>
+
+<p><strong>Solution</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_snell_zero_velocity_top</span><span class="p">():</span>
+    <span class="s">"""That that a value error is raised with a zero velocity top layer."""</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="nb">ValueError</span><span class="p">):</span>
+        <span class="n">snell_angle</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="coverage-with-coveragepy-and-pytest-cov">Coverage with coverage.py and pytest-cov</h3>
+<p>We also want to know what the test coverage of our library is - have we missed
+anything? We can use coverage.py to check this and pytest-cov lets us do run this
+tool on all of our test suite and see the total library coverage.</p>
+
+<ul>
+  <li>Run <code class="highlighter-rouge">py.test --cov=hugs</code></li>
+  <li>Add a function with no tests</li>
+  <li>Run it again</li>
+  <li>Remove the added function</li>
+</ul>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/jrleeman/SettingUpOpenSource">SettingUpOpenSource</a> is maintained by <a href="https://github.com/jrleeman">jrleeman</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  
+
+</body></html>
